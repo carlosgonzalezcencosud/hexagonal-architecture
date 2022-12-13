@@ -1,6 +1,6 @@
-import NotifierRepository from '../core/repositories/notifier.repository';
 // import nodemailer from 'nodemailer';
 import Order from '../core/entities/Order';
+import NotifierRepository from '../core/interfaces/notifier.repository';
 
 class EmailNotifier implements NotifierRepository {
   public async notify(order: Order): Promise<any> {

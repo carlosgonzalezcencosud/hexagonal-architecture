@@ -15,9 +15,8 @@ class MongoOrderRepository implements OrderRepository {
     return parsedResult;
   }
 
-  /// COllection per request
   private async getCollection() {
-    const url = 'mongodb://localhost:27017';
+    const url = 'mongodb://localhost:27017/orders';
     const client = new MongoClient(url)
 
     await client.connect();

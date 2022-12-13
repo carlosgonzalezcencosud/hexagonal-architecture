@@ -1,10 +1,11 @@
 import { Response, Request } from 'express';
-import createOrder from '../core/services/saveBooking.service';
+import createOrder from '../core/services/index';
 
 const orderController = async (request: Request, response: Response) => {
   const { body } = request;
   const { user, items } = body;
 
+  console.log('orderController');
   const order = await createOrder(user, items);
   response.json(order);
 };
