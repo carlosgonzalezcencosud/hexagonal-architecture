@@ -1,6 +1,6 @@
 import EmailNotifier from '../../infrastructure/emailNotifier.repository';
 import MongoOrderRepository from '../../infrastructure/mongo-order.repository';
-import createOrder from './saveBooking.service';
+import createOrder from './orders.service';
 
 const orderRepository = new MongoOrderRepository();
 const notifierRepository = new  EmailNotifier();

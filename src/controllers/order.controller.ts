@@ -5,7 +5,6 @@ const orderController = async (request: Request, response: Response) => {
   const { body } = request;
   const { user, items } = body;
 
-  console.log('orderController');
   const order = await createOrder(user, items);
   response.json(order);
 };

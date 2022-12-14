@@ -10,7 +10,6 @@ const createOrder =
     notifierRepository: NotifierRepository,
   ) =>
   async (user: User, items: Item[]) => {
-    console.log('createOrder');
     const orderEntity: Order = {
       orderId: '1',
       userId: user.id,

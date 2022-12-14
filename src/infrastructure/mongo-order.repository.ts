@@ -1,28 +1,28 @@
-import {MongoClient} from 'mongodb';
+import { MongoClient } from 'mongodb';
 import Order from '../core/entities/Order';
 import OrderRepository from '../core/interfaces/order.repository';
 
 class MongoOrderRepository implements OrderRepository {
   public async saveOrder(order: Order): Promise<any> {
     const collection = await this.getCollection();
-    const orderId = await collection.insertOne(order)
+    const orderId = await collection.insertOne(order);
 
-    const result = await collection.findOne({ _id: orderId.insertedId })
-    console.log({ result })
-    const parsedResult = JSON.parse(JSON.stringify(result)) as Order
-    console.log({ parsedResult })
+    const result = await collection.findOne({ _id: orderId.insertedId });
 
-    return parsedResult;
+    return result;
   }
 
   private async getCollection() {
-    const url = 'mongodb://localhost:27017/orders';
-    const client = new MongoClient(url)
+    const url = 'mongodb://root:example@127.0.0.1:27017/';
+    const client = new MongoClient(url);
 
-    await client.connect();
-
-    const db = client.db('orders');
-    return db.collection('orders');
+    try {
+      await client.connect();
+      const db = client.db('orders');
+      return db.collection('orders');
+    } catch (err) {
+      console.log(err);
+    }
   }
 }
 export default MongoOrderRepository;
