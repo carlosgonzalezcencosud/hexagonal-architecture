@@ -12,13 +12,14 @@ const createOrder =
   async (user: User, items: Item[]) => {
     const orderEntity: Order = {
       orderId: '1',
-      userId: user.id,
+      user,
       items,
       total: items.reduce((total, item) => total + item.price, 0),
     };
 
     const order = await orderRepository.saveOrder(orderEntity);
-    await notifierRepository.notify(order);
+    const mail = await notifierRepository.notify(order);
+    console.log('mail response', JSON.stringify(mail, null, 2));
 
     return order;
   };

@@ -1,8 +1,9 @@
 import Item from "./Item";
+import User from "./User";
 
 export default interface Order {
   orderId: string;
-  userId: string;
+  user: User;
   items: Item[];
   total: number;
 }
