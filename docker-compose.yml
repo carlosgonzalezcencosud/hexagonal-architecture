@@ -24,17 +24,17 @@ services:
       ME_CONFIG_MONGODB_ADMINPASSWORD: example
       ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
 
-  couchserver:
-    image: couchdb
-    restart: always
-    ports:
-      - "5984:5984"
-    environment:
-      - COUCHDB_USER=root
-      - COUCHDB_PASSWORD=example
-    volumes:
-        - couch-volume:/opt/couchdb/data
+  # couchserver:
+  #   image: couchdb
+  #   restart: always
+  #   ports:
+  #     - "5984:5984"
+  #   environment:
+  #     - COUCHDB_USER=root
+  #     - COUCHDB_PASSWORD=example
+  #   volumes:
+  #       - couch-volume:/opt/couchdb/data
 
 volumes:
   mongo-volume:
-  couch-volume:
+  # couch-volume:
