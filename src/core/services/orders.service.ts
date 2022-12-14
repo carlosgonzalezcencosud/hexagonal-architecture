@@ -18,6 +18,7 @@ const createOrder =
     };
 
     const order = await orderRepository.saveOrder(orderEntity);
+    console.log('Order saved', order);
     const mail = await notifierRepository.notify(order);
     console.log('mail response', JSON.stringify(mail, null, 2));
 
